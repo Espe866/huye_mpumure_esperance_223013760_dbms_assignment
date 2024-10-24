@@ -1,0 +1,130 @@
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.3.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE ruhande;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use ruhande;
+Database changed
+mysql> CREATE TABLE ngoma(id int(16) primary key,f_name char(250),l_name char(250),gender char(250),province char(250),district char(250),sector char(250),cell char(250),email char(250),tel int(10));
+Query OK, 0 rows affected, 2 warnings (0.01 sec)
+
+mysql> insert into ngoma(1,"mpumure","esperance","f","east","nyagatare","karangazi","karangazi","karangazi","mpumureespe@gmail.com",1234567890);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"mpumure","esperance","f","east","nyagatare","karangazi","karangazi","karangaz' at line 1
+mysql> insert into ngoma(1,"mpumure","esperance","f","east","nyagatare","karangazi","karangazi","mpumureespe@gmail.com",1234567890);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"mpumure","esperance","f","east","nyagatare","karangazi","karangazi","mpumuree' at line 1
+mysql> insert into ngoma values(1,"mpumure","esperance","f","east","nyagatare","karangazi","karangazi","mpumureespe@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(2,"musabika","fidele","m","north","burera","cyanika","kabyiniro","musabika@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(3,"shukuru","eric","m","north","rulindo","kinihira","nyirangarama","shukuru@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(4,"iranzi","claude","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(4,"christine","kirabo","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+ERROR 1062 (23000): Duplicate entry '4' for key 'ngoma.PRIMARY'
+mysql> insert into ngoma values(4,"christine","kirabo","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+ERROR 1062 (23000): Duplicate entry '4' for key 'ngoma.PRIMARY'
+mysql> insert into ngoma values(6,"christine","kirabo","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(7,"christine","kirabo","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(8,"christine","kirabo","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(9,"christine","kirabo","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values(10,"christine","kirabo","m","west","rusizi","rusizi","ruri","iranziclaude@gmail.com",1234567890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ngoma
+    -> ;
++----+--------------+-----------+--------+----------+-----------+-----------+--------------+------------------------------+-----------+
+| id | f_name       | l_name    | gender | province | district  | sector    | cell         | email                        | tel       |
++----+--------------+-----------+--------+----------+-----------+-----------+--------------+------------------------------+-----------+
+|  1 | mpumure      | esperance | f      | east     | nyagatare | karangazi | karangazi    | mpumureespe@gmail.com        | 780965432 |
+|  2 | musabika     | fidele    | m      | north    | burera    | cyanika   | kabyiniro    | musabika@gmail.com           | 787483647 |
+|  3 | shukuru      | eric      | m      | north    | rulindo   | kinihira  | nyirangarama | shukuru@gmail.com            | 789123456 |
+|  4 | iranzi       | claude    | m      | west     | rusizi    | rusizi    | ruri         | iranziclaude@gmail.com       | 781234569 |
+|  6 | kayitesi     | belyse    | f      | east     | rukomo    | rukomo    | mwombo       | kayitesibelyse123@gmail.com  | 789123456 |
+|  7 | Munyarukundo | Joseph    | m      | westeast | karangazi | mwiko     | kanzenze     | munyarukundojoseph@gmail.com | 789654321 |
+|  8 | mugisha      | yves      | m      | west     | kibari    | muhoza    | kajevuba     | mugishayves100@gmail.com     | 789123456 |
+|  9 | rudasingwa   | Allan     | m      | east     | karangazi | rusizi    | mwumba       | allanrudasingwa@gmail.com    | 789012345 |
+| 10 | Rwigamba     | Kenny     | m      | south    | butare    | rusizi    | kabatwa      | kennylounge@gmail.com        | 789065432 |
++----+--------------+-----------+--------+----------+-----------+-----------+--------------+------------------------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> update sector set sector="tumba" where id=10;
+ERROR 1146 (42S02): Table 'ruhande.sector' doesn't exist
+mysql> update ngoma set sector="tumba" where id=10;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from ngoma;
++----+--------------+-----------+--------+----------+-----------+-----------+--------------+------------------------------+-----------+
+| id | f_name       | l_name    | gender | province | district  | sector    | cell         | email                        | tel       |
++----+--------------+-----------+--------+----------+-----------+-----------+--------------+------------------------------+-----------+
+|  1 | mpumure      | esperance | f      | east     | nyagatare | karangazi | karangazi    | mpumureespe@gmail.com        | 780965432 |
+|  2 | musabika     | fidele    | m      | north    | burera    | cyanika   | kabyiniro    | musabika@gmail.com           | 787483647 |
+|  3 | shukuru      | eric      | m      | north    | rulindo   | kinihira  | nyirangarama | shukuru@gmail.com            | 789123456 |
+|  4 | iranzi       | claude    | m      | west     | rusizi    | rusizi    | ruri         | iranziclaude@gmail.com       | 781234569 |
+|  6 | kayitesi     | belyse    | f      | east     | rukomo    | rukomo    | mwombo       | kayitesibelyse123@gmail.com  | 789123456 |
+|  7 | Munyarukundo | Joseph    | m      | westeast | karangazi | mwiko     | kanzenze     | munyarukundojoseph@gmail.com | 789654321 |
+|  8 | mugisha      | yves      | m      | west     | kibari    | muhoza    | kajevuba     | mugishayves100@gmail.com     | 789123456 |
+|  9 | rudasingwa   | Allan     | m      | east     | karangazi | rusizi    | mwumba       | allanrudasingwa@gmail.com    | 789012345 |
+| 10 | Rwigamba     | Kenny     | m      | south    | butare    | tumba     | kabatwa      | kennylounge@gmail.com        | 789065432 |
++----+--------------+-----------+--------+----------+-----------+-----------+--------------+------------------------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> delate from ngoma where l_name="esperance";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delate from ngoma where l_name="esperance"' at line 1
+mysql> delete from ngoma where l_name="esperance";
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ngoma;
++----+--------------+--------+--------+----------+-----------+----------+--------------+------------------------------+-----------+
+| id | f_name       | l_name | gender | province | district  | sector   | cell         | email                        | tel       |
++----+--------------+--------+--------+----------+-----------+----------+--------------+------------------------------+-----------+
+|  2 | musabika     | fidele | m      | north    | burera    | cyanika  | kabyiniro    | musabika@gmail.com           | 787483647 |
+|  3 | shukuru      | eric   | m      | north    | rulindo   | kinihira | nyirangarama | shukuru@gmail.com            | 789123456 |
+|  4 | iranzi       | claude | m      | west     | rusizi    | rusizi   | ruri         | iranziclaude@gmail.com       | 781234569 |
+|  6 | kayitesi     | belyse | f      | east     | rukomo    | rukomo   | mwombo       | kayitesibelyse123@gmail.com  | 789123456 |
+|  7 | Munyarukundo | Joseph | m      | westeast | karangazi | mwiko    | kanzenze     | munyarukundojoseph@gmail.com | 789654321 |
+|  8 | mugisha      | yves   | m      | west     | kibari    | muhoza   | kajevuba     | mugishayves100@gmail.com     | 789123456 |
+|  9 | rudasingwa   | Allan  | m      | east     | karangazi | rusizi   | mwumba       | allanrudasingwa@gmail.com    | 789012345 |
+| 10 | Rwigamba     | Kenny  | m      | south    | butare    | tumba    | kabatwa      | kennylounge@gmail.com        | 789065432 |
++----+--------------+--------+--------+----------+-----------+----------+--------------+------------------------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select*from ngoma where gender="f" or district ="karangazi",
+    -> select*from ngoma where gender="f" or district ="karangazi";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+select*from ngoma where gender="f" or district ="karangazi"' at line 1
+mysql> select*from ngoma where gender="f" or district ="karangazi";
++----+--------------+--------+--------+----------+-----------+--------+----------+------------------------------+-----------+
+| id | f_name       | l_name | gender | province | district  | sector | cell     | email                        | tel       |
++----+--------------+--------+--------+----------+-----------+--------+----------+------------------------------+-----------+
+|  6 | kayitesi     | belyse | f      | east     | rukomo    | rukomo | mwombo   | kayitesibelyse123@gmail.com  | 789123456 |
+|  7 | Munyarukundo | Joseph | m      | westeast | karangazi | mwiko  | kanzenze | munyarukundojoseph@gmail.com | 789654321 |
+|  9 | rudasingwa   | Allan  | m      | east     | karangazi | rusizi | mwumba   | allanrudasingwa@gmail.com    | 789012345 |
++----+--------------+--------+--------+----------+-----------+--------+----------+------------------------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
